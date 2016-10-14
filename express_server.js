@@ -16,6 +16,13 @@ var urlDatabase = {
   "9sm5xK": "http://www.google.com", 
 };
 
+app.post("/urls/:id/delete", (req, res) => {
+  let deleteProperty = req.params.id;
+  delete urlDatabase[deleteProperty];
+  res.redirect("/urls");
+})
+
+
 app.get("/u/:shortURL", (req, res) => {
   let shortURL = req.params.shortURL
   let longURL = urlDatabase[shortURL]

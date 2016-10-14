@@ -5,12 +5,26 @@
   </head>
 <body>
  <!-- Write EJS code here to display shortened links -->
+
+
 	<ul> <% for (var key in urls) { %>
-		<li> <%= urls[key] %> : <%= [key] %> </li>
-			<% } %>
-		<li><a href="#">Shorten a url here! I hope. </a></li>
+		<li> <%= key %> : <%= urls[key] %> </li>
+		<li> <form method="POST" action="/urls/<%= key %>/delete">
+			
+		<input type="submit" value="Delete Me!">
+
+		</form>
+
+
+		</li>
+		<% } %>
+			
+		<li><a href="/">Shorten a url here! I hope. </a></li>
+
 	</ul>
 
 
 </body>
 </html>
+
+
