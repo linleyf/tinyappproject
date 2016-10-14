@@ -11,10 +11,17 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 
 
-var urlDatabase = {
+var urlDatabase = { 
   "b2xVn2": "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
+  "9sm5xK": "http://www.google.com", 
 };
+
+app.get("/u/:shortURL", (req, res) => {
+  let shortURL = req.params.shortURL
+  let longURL = urlDatabase[shortURL]
+  res.redirect(longURL);
+
+});
 
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
@@ -22,7 +29,13 @@ app.get("/urls/new", (req, res) => {
 
 app.post("/urls", (req, res) => {
   console.log(req.body);  // debug statement to see POST parameters
-  res.send("Ok");         // Respond with 'Ok' (we will replace this)
+
+  var string = generateRandomString()
+  var longURL = req.body.longURL
+  urlDatabase[string] = longURL
+  console.log(urlDatabase)
+
+  res.redirect("/urls/" + string)
 });
 
 app.get("/", (req, res) => {
@@ -62,7 +75,7 @@ var randomString = ""
  
   for (var i = 0; i < stringLength; i++) {
     min = 0
-    max = alphaLetter.length
+    max = alphaLetter.length - 1
 
     var ranIndex = Math.floor(Math.random() * (max - min + 1)) + min;
     var ranValue = alphaLetter[ranIndex]
@@ -74,9 +87,7 @@ var randomString = ""
 
 }
 
-generateRandomString()
-console.log(generateRandomString())
-
+//console.log(generateRandomString())
 
 
 
