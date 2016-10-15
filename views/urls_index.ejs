@@ -9,7 +9,11 @@
 
 	 <% for (var key in urls) { %>
 		<div style="display: inline-block;"> <%= key %> : <%= urls[key] %> </div>
-		<div style="display: inline-block;"> <form method="POST" action="/urls/<%= key %>/delete">
+		<div style="display: inline-block;">
+		
+		<a href="/urls/<%= key %>">Edit</a>
+
+		<form method="POST" action="/urls/<%= key %>/delete">
 			
 		<input type="submit" value="Delete!"> 
 
