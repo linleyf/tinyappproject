@@ -7,21 +7,21 @@
  <!-- Write EJS code here to display shortened links -->
 
 
-	<ul> <% for (var key in urls) { %>
-		<li> <%= key %> : <%= urls[key] %> </li>
-		<li> <form method="POST" action="/urls/<%= key %>/delete">
+	 <% for (var key in urls) { %>
+		<div style="display: inline-block;"> <%= key %> : <%= urls[key] %> </div>
+		<div style="display: inline-block;"> <form method="POST" action="/urls/<%= key %>/delete">
 			
-		<input type="submit" value="Delete Me!">
+		<input type="submit" value="Delete!"> 
 
 		</form>
 
 
-		</li>
+		</div><br>
 		<% } %>
 			
-		<li><a href="/">Shorten a url here! I hope. </a></li>
+		<div><a href="/">Shorten a url here! I hope. </a></div>
 
-	</ul>
+	
 
 
 </body>

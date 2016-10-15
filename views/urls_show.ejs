@@ -5,10 +5,19 @@
   </head>
 <body>
  <!-- Write EJS code here to display shortened links -->
-<h2> Teeny App </h2>
+<h2> TeenyWeeny App </h2>
 
-<p> this is <%=shortURL%> </p>
+	<p>ShortURL: <%=shortURL%> </p>
+	
+	<form action="/urls/<%=shortURL%>" method="POST">
 
+	<br>
+	<label for="longURL">updated url</label>
+  <input type="text" name="longURL" id="longURL"><br>
+  <input type="submit" value="Update">
+  
+	</form>
 
 </body>
 </html>
+
